@@ -1,0 +1,590 @@
+{
+  "initial_stats": {
+    "health": 100,
+    "money": 50,
+    "fame": 10,
+    "knowledge": 0,
+    "inventory": []
+  },
+  "nodes": [
+    {
+      "id": "beginning",
+      "locale": {
+        "en": {
+          "text": "In a distant land shaped by ancient legends and epic battles, you live in a kingdom under the looming threat of the cruel Dark King Morcar from a neighboring realm. Morcar’s armies ravage border villages, while your kingdom strives to maintain peace. But dark clouds of war gather on the horizon. King Arland is rallying all young warriors to the castle.\n\nYou are a brave youth from a rural village. Though your family are farmers, you’ve trained in sword and bow, earning renown for defending your village from bandits. One autumn evening, in the village square, the King’s herald reads a decree: Morcar’s forces have been sighted at the border, and all are summoned to the castle.\n\nYour childhood friend Boran nudges you excitedly, whispering, 'I’m joining the King’s army. Are you coming?' At that moment, a cloaked stranger, the wise wizard Melandor, approaches you: 'This war is but the start of a greater calamity. Come with me to destroy the source of Morcar’s power.'\n\nCurrent stats:\n- Health: 100\n- Money: 50\n- Fame: 10\n- Knowledge: 0\n- Inventory: []\n\nWhat will you do?",
+          "choices": [
+            {
+              "text": "Answer the King’s Call: Join the army to serve your country.",
+              "next": "war_path",
+              "effects": {
+                "fame": 5
+              }
+            },
+            {
+              "text": "Follow the Wizard: Embark on a mystical quest with Melandor.",
+              "next": "magic_path",
+              "effects": {
+                "fame": -5,
+                "money": 10
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "war_path",
+      "locale": {
+        "en": {
+          "text": "You heed the King’s call, setting out with Boran and other volunteers toward the castle. Your family bids you farewell with pride and tears, and the villagers hail you as a hero (Fame +5). As you pass through a forested ravine, you spot an overturned caravan and bandits. Screams echo; merchants are in peril. Boran whispers, 'We must help them!' What will you do?",
+          "choices": [
+            {
+              "text": "Intervene: Fight the bandits.",
+              "next": "bandit_fight",
+              "effects": {
+                "health": -20,
+                "fame": 10,
+                "money": 10
+              }
+            },
+            {
+              "text": "Ignore: Slip by quietly.",
+              "next": "bandit_avoid",
+              "effects": {
+                "fame": -5
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "bandit_fight",
+      "locale": {
+        "en": {
+          "text": "You draw your sword and charge the bandits with Boran. After a fierce fight, you defeat them, but a cut on your arm stings (Health -20). The grateful merchants hand you a pouch of gold (Money +10) and a healing potion (Inventory +healing_potion). Your bravery will be sung far and wide (Fame +10). A hooded figure among the merchants whispers, 'Seek the prisoner in the camp. He knows Morcar’s secret.' What next?",
+          "choices": [
+            {
+              "text": "Continue to the King’s camp",
+              "next": "war_preparation"
+            },
+            {
+              "text": "Investigate the prisoner rumor",
+              "next": "mysterious_prisoner",
+              "effects": {
+                "fame": 5
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "bandit_avoid",
+      "locale": {
+        "en": {
+          "text": "You grit your teeth and ignore the bandits. Their victims’ screams haunt you as you pass through the forest (Fame -5). Guilt weighs heavy, but you remain unharmed. You reach the King’s camp as war looms. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "war_preparation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "mysterious_prisoner",
+      "locale": {
+        "en": {
+          "text": "At the King’s camp, you slip away from the main tents to find the prisoner’s cage. A gaunt man with piercing eyes, chained and guarded, notices you. He whispers, 'I was Morcar’s advisor. Free me, and I’ll reveal his weakness.' The guards are distracted, but freeing him risks treason. Boran urges caution. What will you do?",
+          "choices": [
+            {
+              "text": "Free the prisoner",
+              "next": "free_prisoner",
+              "effects": {
+                "health": -10,
+                "fame": -5,
+                "knowledge": 10
+              }
+            },
+            {
+              "text": "Report him to the guards",
+              "next": "report_prisoner",
+              "effects": {
+                "fame": 5
+              }
+            },
+            {
+              "text": "Ignore and return to camp",
+              "next": "war_preparation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "free_prisoner",
+      "locale": {
+        "en": {
+          "text": "You pick the lock and free the prisoner, but a guard spots you, and you take a blow while escaping (Health -10). The prisoner, named Eadric, reveals Morcar’s armor is enchanted, vulnerable only to a relic hidden in the Cursed Forest (Knowledge +10). Your actions raise suspicion among the camp (Fame -5). Eadric tells you of a cave near the camp where the relic lies, then vanishes into the night. What next?",
+          "choices": [
+            {
+              "text": "Seek the relic in the cave",
+              "next": "relic_cave",
+              "effects": {
+                "fame": 5
+              }
+            },
+            {
+              "text": "Continue to war preparations",
+              "next": "war_preparation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "report_prisoner",
+      "locale": {
+        "en": {
+          "text": "You report the prisoner to the guards, earning their trust (Fame +5). They interrogate him, but he reveals nothing, and you learn no secrets. You return to Boran, who nods approvingly. The camp prepares for war as Morcar’s army approaches. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "war_preparation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "relic_cave",
+      "locale": {
+        "en": {
+          "text": "You sneak away from the camp to a hidden cave Eadric described. Inside, you find a glowing relic guarded by a stone golem. Boran whispers, 'That thing looks dangerous!' The relic pulses with power that could weaken Morcar. What will you do?",
+          "choices": [
+            {
+              "text": "Fight the golem to claim the relic",
+              "next": "fight_golem",
+              "effects": {
+                "health": -25,
+                "fame": 10,
+                "inventory": ["relic"]
+              }
+            },
+            {
+              "text": "Leave the relic and return to camp",
+              "next": "war_preparation",
+              "effects": {
+                "fame": -5
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "fight_golem",
+      "locale": {
+        "en": {
+          "text": "You and Boran battle the stone golem. Its fists crash like boulders, wounding you (Health -25), but you shatter it and claim the relic (Inventory +relic). Tales of your bravery spread (Fame +10). You return to the camp as war looms. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "war_preparation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "war_preparation",
+      "locale": {
+        "en": {
+          "text": "You arrive at the King’s main camp, awed by hundreds of tents and waving banners. After days of training, spies report Morcar’s army approaching. That night, by the campfire, Boran asks in a trembling voice, 'Will we survive tomorrow’s battle?' You pat his shoulder to bolster his courage. At dawn, war horns blare. You don your armor and take up your weapon. Morcar’s black-bannered army appears on the horizon. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "battle_front"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "battle_front",
+      "locale": {
+        "en": {
+          "text": "War horns sound, and swords clash. Fighting shoulder-to-shoulder with Boran in King Arland’s army against Morcar’s legions, arrows whiz by, and blows rain on your shield. You spot Morcar on his black-armored steed, radiating fear. Suddenly, Boran’s pained cry rings out; he’s fallen from his horse, surrounded by enemies. At the same time, you notice Morcar vulnerable; attacking him could turn the tide. What will you do?",
+          "choices": [
+            {
+              "text": "Save Boran: Rush to your friend’s aid.",
+              "next": "save_boran",
+              "effects": {
+                "health": -50,
+                "fame": -10
+              }
+            },
+            {
+              "text": "Stop Morcar: Attack the Dark King.",
+              "next": "fight_morcar",
+              "effects": {
+                "health": -30,
+                "fame": 20,
+                "money": 30
+              }
+            },
+            {
+              "text": "Use healing potion: Restore health to fight on.",
+              "next": "use_potion",
+              "effects": {
+                "health": 20,
+                "inventory": ["remove:healing_potion"]
+              },
+              "condition": {
+                "inventory": ["healing_potion"]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "use_potion",
+      "locale": {
+        "en": {
+          "text": "You quickly drink the healing potion, feeling strength return (Health +20, Inventory -healing_potion). Refreshed, you face the battlefield again. Boran is still surrounded, and Morcar remains vulnerable. What will you do?",
+          "choices": [
+            {
+              "text": "Save Boran: Rush to your friend’s aid.",
+              "next": "save_boran",
+              "effects": {
+                "health": -50,
+                "fame": -10
+              }
+            },
+            {
+              "text": "Stop Morcar: Attack the Dark King.",
+              "next": "fight_morcar",
+              "effects": {
+                "health": -30,
+                "fame": 20,
+                "money": 30
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "save_boran",
+      "locale": {
+        "en": {
+          "text": "You spur your horse toward Boran, shielding him from enemies and pulling him to safety. But a sword pierces your back (Health -50). Pain engulfs you as you collapse. Boran, tears streaming, holds you: 'Hold on, friend!' Your strength fades. Morcar’s army triumphs, plunging the kingdom into darkness. Years later, Boran recounts your heroism, but the kingdom suffers under Morcar’s tyranny (Fame -10).",
+          "choices": []
+        }
+      }
+    },
+    {
+      "id": "fight_morcar",
+      "locale": {
+        "en": {
+          "text": "Leaving Boran behind, you charge Morcar. The Dark King draws his sword, steel and magic sparking. If you have the relic, it glows, weakening his armor (damage reduced if relic in inventory). In a grueling fight, you defeat him, but take wounds (Health -15 if relic, else -30). His army panics and flees. King Arland thanks you: 'We couldn’t have won without you!' But you find Boran lifeless in the blood-soaked field. His last whisper is, 'You did it...' The kingdom finds peace, and you’re hailed a hero (Fame +20, Money +30). Yet Boran’s loss scars your heart.",
+          "choices": [],
+          "effects": {
+            "health": [
+              { "value": -15, "condition": { "inventory": ["relic"] } },
+              { "value": -30 }
+            ],
+            "fame": 20,
+            "money": 30
+          }
+        }
+      }
+    },
+    {
+      "id": "magic_path",
+      "locale": {
+        "en": {
+          "text": "You accept Melandor’s offer. The villagers misunderstand, judging you harshly (Fame -5). With Melandor’s magic, you swiftly reach the Cursed Forest. At a mossy bridge, a witch demands a toll. Melandor whispers, 'Time is short—pay or fight.' What will you do?",
+          "choices": [
+            {
+              "text": "Pay Gold: Avoid conflict.",
+              "next": "pay_witch",
+              "effects": {
+                "money": -20
+              }
+            },
+            {
+              "text": "Attack: Fight the witch.",
+              "next": "fight_witch",
+              "effects": {
+                "health": -15,
+                "fame": 5,
+                "money": 15
+              }
+            },
+            {
+              "text": "Search for another path",
+              "next": "forest_trial",
+              "effects": {
+                "health": -10,
+                "fame": 5
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "forest_trial",
+      "locale": {
+        "en": {
+          "text": "You and Melandor bypass the witch, venturing deeper into the Cursed Forest. The air grows thick, and ghostly whispers echo. A spectral guardian appears, demanding you prove your worth to pass. 'Solve my riddle or face my wrath,' it intones. Melandor nods, urging you to try. What will you do?",
+          "choices": [
+            {
+              "text": "Attempt the riddle",
+              "next": "riddle_challenge",
+              "effects": {
+                "fame": 10
+              }
+            },
+            {
+              "text": "Fight the guardian",
+              "next": "guardian_fight",
+              "effects": {
+                "health": -25,
+                "money": 10
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "riddle_challenge",
+      "locale": {
+        "en": {
+          "text": "You accept the guardian’s riddle: 'I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?' You answer 'an echo,' and the guardian fades, granting passage (Fame +10). Melandor smiles, impressed. You reach the ancient temple. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "temple"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "guardian_fight",
+      "locale": {
+        "en": {
+          "text": "You draw your sword and charge the spectral guardian. With Melandor’s magic, you banish it, but its icy touch chills you (Health -25). You find a small cache of gold in its remains (Money +10). Exhausted but victorious, you reach the ancient temple. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "temple"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "pay_witch",
+      "locale": {
+        "en": {
+          "text": "You pay the witch’s toll (Money -20). She cackles and clears the bridge. You avoid conflict, but submission stings. With Melandor, you pass through the forest to an ancient temple. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "temple"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "fight_witch",
+      "locale": {
+        "en": {
+          "text": "You draw your sword and attack the witch. With Melandor’s aid, you defeat her, but take a scratch (Health -15). You claim her loot (Money +15, Fame +5). You pass through the forest to an ancient temple. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "temple"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "temple",
+      "locale": {
+        "en": {
+          "text": "You reach the ancient temple’s entrance. Melandor says, 'Morcar is performing a ritual here.' You descend ruined stairs into the dungeons, hearing chants and hums from below. A stone door blocks your path, etched with runes. Melandor warns, 'It’s trapped. We must proceed carefully.' What will you do?",
+          "choices": [
+            {
+              "text": "Use knowledge to disarm the trap",
+              "next": "disarm_trap",
+              "effects": {
+                "fame": 10
+              },
+              "condition": {
+                "knowledge": { "min": 10 }
+              }
+            },
+            {
+              "text": "Force the door open",
+              "next": "force_door",
+              "effects": {
+                "health": -20
+              }
+            },
+            {
+              "text": "Search for a hidden passage",
+              "next": "hidden_passage",
+              "effects": {
+                "fame": 5,
+                "health": -10
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "disarm_trap",
+      "locale": {
+        "en": {
+          "text": "Using Eadric’s knowledge of Morcar’s enchantments, you decipher the runes and disarm the trap (Fame +10). The stone door opens smoothly, revealing the chamber beyond. Melandor nods approvingly. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "temple_hall"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "force_door",
+      "locale": {
+        "en": {
+          "text": "You and Melandor force the door, triggering a blast of arcane energy that burns you (Health -20). The door crumbles, and you stumble into the chamber. Melandor steadies you, urging haste. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "temple_hall"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "hidden_passage",
+      "locale": {
+        "en": {
+          "text": "You search the walls and find a hidden passage, but navigating its narrow, crumbling path scrapes you (Health -10). Your cunning earns whispers of respect (Fame +5). You emerge in the chamber. What next?",
+          "choices": [
+            {
+              "text": "Continue",
+              "next": "temple_hall"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "temple_hall",
+      "locale": {
+        "en": {
+          "text": "You reach an underground chamber. A demonic silhouette flickers in the center. Morcar, in black robes, chants dark words. Melandor cries, 'He’s begun the ritual! We must act!' Morcar spots you, hurling a fiery spear; you dodge just in time. As Melandor battles the demon, Morcar offers: 'Join me, and gain wealth and power.' What will you do?",
+          "choices": [
+            {
+              "text": "Accept the Offer: Choose Morcar’s power and wealth.",
+              "next": "dark_pact",
+              "effects": {
+                "money": 50,
+                "fame": -20
+              }
+            },
+            {
+              "text": "Fight to the End: Battle Morcar.",
+              "next": "end_of_darkness",
+              "effects": {
+                "health": -30,
+                "fame": 20,
+                "money": 30
+              }
+            },
+            {
+              "text": "Use healing potion: Restore health to fight on.",
+              "next": "use_potion_temple",
+              "effects": {
+                "health": 20,
+                "inventory": ["remove:healing_potion"]
+              },
+              "condition": {
+                "inventory": ["healing_potion"]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "use_potion_temple",
+      "locale": {
+        "en": {
+          "text": "You drink the healing potion, feeling vitality surge (Health +20, Inventory -healing_potion). Refreshed, you face Morcar again as he continues his ritual. Melandor battles the demon, and Morcar’s offer still stands. What will you do?",
+          "choices": [
+            {
+              "text": "Accept the Offer: Choose Morcar’s power and wealth.",
+              "next": "dark_pact",
+              "effects": {
+                "money": 50,
+                "fame": -20
+              }
+            },
+            {
+              "text": "Fight to the End: Battle Morcar.",
+              "next": "end_of_darkness",
+              "effects": {
+                "health": -30,
+                "fame": 20,
+                "money": 30
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "dark_pact",
+      "locale": {
+        "en": {
+          "text": "You lower your sword, accepting Morcar’s offer. Ignoring Melandor’s horrified cry, the demon Urazel enters the world. Morcar rewards you (Money +50), but the kingdom falls. His armies conquer all, slaughtering innocents. Your conscience drowns in guilt (Fame -20). Your life is wealthy but filled with regret.",
+          "choices": []
+        }
+      }
+    },
+    {
+      "id": "end_of_darkness",
+      "locale": {
+        "en": {
+          "text": "You reject Morcar’s offer and attack. With Melandor’s aid and the relic’s power (if in inventory), you weaken Morcar’s magic. You defeat him, taking wounds (Health -15 if relic, else -30). The demon Urazel is banished. Morcar’s fall turns the war; the King’s army triumphs. King Arland thanks you, and your name becomes legend (Fame +20). Back in your village, Boran embraces you: 'Forgive us!' The King grants you gold and a knighthood (Money +30).",
+          "choices": [],
+          "effects": {
+            "health": [
+              { "value": -15, "condition": { "inventory": ["relic"] } },
+              { "value": -30 }
+            ],
+            "fame": 20,
+            "money": 30
+          }
+        }
+      }
+    }
+  ]
+}
