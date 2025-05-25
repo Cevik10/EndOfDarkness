@@ -10,8 +10,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class StoryViewModel @Inject constructor(private val storyRepository: StoryRepository) :
-    ViewModel() {
+class StoryViewModel @Inject constructor(private val storyRepository: StoryRepository) : ViewModel() {
     private val _currentNodeId = mutableStateOf("beginning")
     val currentNodeId: State<String> = _currentNodeId
 
@@ -25,9 +24,9 @@ class StoryViewModel @Inject constructor(private val storyRepository: StoryRepos
         storyData?.let {
             val initialStats = it.getJSONObject("initial_stats")
             _stats.value = Stats(
-                initialStats.getInt("health"),
-                initialStats.getInt("money"),
-                initialStats.getInt("fame")
+                health = initialStats.getInt("health"),
+                money = initialStats.getInt("money"),
+                fame = initialStats.getInt("fame"),
             )
         }
     }
@@ -50,6 +49,13 @@ class StoryViewModel @Inject constructor(private val storyRepository: StoryRepos
             ?.optString("text") ?: "Düğüm bulunamadı / Node not found"
     }
 
+    fun getCurrentImage(): String? {
+        val node = getNode(_currentNodeId.value)
+        return node?.optJSONObject("locale")
+            ?.optJSONObject(currentLanguage)
+            ?.optString("image")
+    }
+
     fun getCurrentChoices(): List<JSONObject> {
         val node = getNode(_currentNodeId.value)
         val choicesArray = node?.optJSONObject("locale")
@@ -63,7 +69,7 @@ class StoryViewModel @Inject constructor(private val storyRepository: StoryRepos
             _stats.value = _stats.value.copy(
                 health = _stats.value.health + effects.optInt("health", 0),
                 money = _stats.value.money + effects.optInt("money", 0),
-                fame = _stats.value.fame + effects.optInt("fame", 0)
+                fame = _stats.value.fame + effects.optInt("fame", 0),
             )
         }
         val nextNodeId = choice.optString("next")

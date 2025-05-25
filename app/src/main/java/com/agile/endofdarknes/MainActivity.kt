@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,12 +33,23 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun StoryScreen(viewModel: StoryViewModel = hiltViewModel()) {
     val text = viewModel.getCurrentText()
+    val image = viewModel.getCurrentImage()
     val choices = viewModel.getCurrentChoices()
     val stats = viewModel.stats.value
 
     Column(modifier = Modifier.padding(16.dp)) {
         Text("Health: ${stats.health}  Money: ${stats.money}  Fame: ${stats.fame}")
         Spacer(modifier = Modifier.height(16.dp))
+        image?.let {
+            AsyncImage(
+                model = it,
+                contentDescription = "Story Image",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp)
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+        }
         Text(text)
         Spacer(modifier = Modifier.height(16.dp))
         if (choices.isNotEmpty()) {
@@ -59,4 +71,8 @@ fun StoryScreen(viewModel: StoryViewModel = hiltViewModel()) {
     }
 }
 
-data class Stats(val health: Int, val money: Int, val fame: Int)
+data class Stats(
+    val health: Int,
+    val money: Int,
+    val fame: Int,
+)
